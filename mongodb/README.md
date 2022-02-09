@@ -129,3 +129,36 @@ security:
   keyFile: /var/lib/graylog-database/mongo-security/mongo-key
   transitionToAuth: true
 ```
+
+> :warning: On the SECONDARY nodes !
+
+```shell
+systemctl restart mongod.service
+```
+
+> :warning: On the PRIMARY node !
+
+```shell
+mongo
+```
+
+```sql
+rs.stepdown()
+```
+
+```shell
+systemctl restart mongod.service
+```
+
+Then on all nodes, comment the `transitionToAuth: true` to disable unsecured connections.
+
+```yml
+security:
+  keyFile: /var/lib/graylog-database/mongo-security/mongo-key
+# transitionToAuth: true
+```
+
+Restart all the nodes and you're good.
+```shell
+systemctl restart mongod.service
+```
