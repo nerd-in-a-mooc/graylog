@@ -32,7 +32,9 @@ Dont forget to change the hostname at line 23 !
 
 **Connect to MongoDB**
 
-`mongo`
+```shell
+mongo
+```
 
 **This node will become master when the cluster first starts.**
 ```sql
@@ -51,10 +53,14 @@ rs.initiate(
 ## RBAC
 
 **Connect to MongoDB**
-`mongo`
+```shell
+mongo
+```
 
 **Change to the *admin* database**
-`use admin`
+```sql
+use admin
+```
 
 **Create a *user admin* which will be granted all permissions an all databases**
 
