@@ -8,7 +8,7 @@ Our Graylog and MongoDB hosts are called
 ## Install
 > :warning: On the three Nodes !
 
-```
+```shell
 apt install -y gnupg
 wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | apt-key add -
 echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.4 main" > /etc/apt/sources.list.d/mongodb-org-4.4.list
@@ -20,7 +20,7 @@ systemctl status mongod -l --no-pager
 > :warning: On the three Nodes !
 
 Before we go any further, let's save the main configuration file.
-```
+```shell
 mv /etc/mongod.conf /etc/mongod.conf.bak
 ```
 
@@ -35,7 +35,7 @@ Connect to MongoDB
 `mongo`
 
 This node will become master when the cluster first starts.
-```
+```sql
 rs.initiate(
 {
    _id : "rs01",
@@ -51,10 +51,12 @@ rs.initiate(
 ## RBAC
 
 `mongo`
+
 `use admin`
 
 Create a *user admin* which will be granted all permissions an all databases
-```
+
+```sql
 db.createUser(
 {
    user: "UserAdminNIAM",
@@ -65,7 +67,8 @@ db.createUser(
 ```
 
 Create a *cluster admin* which will be granted all permissions an the cluster
-```
+
+```sql
 db.createUser(
 {
    user: "ClusterAdminNIAM",
@@ -77,7 +80,8 @@ db.createUser(
 
 Create a *graylog-user* which will be use to connect graylog to the MongoDB replica Shard
 `use graylog-database`
-```
+
+```sql
 db.createUser(
 {
    user: "graylog-user",
@@ -96,7 +100,8 @@ Let's now create a keyfile that the nodes will use as an authentication system. 
 > :warning: On ONE node !
 
 Create a directory to add the key and then generate the key.
-```
+
+```shell
 mkdir -p /var/lib/graylog-database/mongo-security/
 openssl rand -base64 768 > /var/lib/graylog-database/mongo-security/mongo-key
 ```
