@@ -11,7 +11,9 @@ Graylog is based on three softwares :
 - MongoDB
 - Graylog (duh)
 
-You will here find good configurations files and explanation that will walk you through those.
+## What you'll find here
+
+You will find good configurations files and explanation that will walk you through those.
 
 You will either be able to start with a fully **functionnal cluster** made of
 
