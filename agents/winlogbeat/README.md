@@ -1,7 +1,7 @@
 Download the x64 agent.ZIP from [here](https://www.elastic.co/fr/downloads/beats/winlogbeat) !
 Unzip the archive under `C:\Program Files (x86)\Winlogbeat`
 
-**Save the original configuration file - in case you want to roll back, or just check it.**
+Save the original configuration file - in case you want to roll back, or just check it.
 
 **Then open a PowerShell in that folder**
 ```PowerShell
