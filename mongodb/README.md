@@ -19,22 +19,22 @@ systemctl status mongod -l --no-pager
 ## Configuration
 > :warning: On the three Nodes !
 
-Before we go any further, let's save the main configuration file.
+**Before we go any further, let's save the main configuration file.**
 ```shell
 mv /etc/mongod.conf /etc/mongod.conf.bak
 ```
 
-Let's now edit `/etc/mongod.conf` with your favorite text editor and paste this configuration file inside.
-Dont forget to change the hostname at line 23.
+**Let's now edit `/etc/mongod.conf` with your favorite text editor and paste this configuration file inside.**
+Dont forget to change the hostname at line 23 !
 
 ## Replica Shard
 > :warning: On ONE node !
 
-Connect to MongoDB
+**Connect to MongoDB**
 
 `mongo`
 
-This node will become master when the cluster first starts.
+**This node will become master when the cluster first starts.**
 ```sql
 rs.initiate(
 {
@@ -50,11 +50,13 @@ rs.initiate(
 
 ## RBAC
 
+**Connect to MongoDB**
 `mongo`
 
+**Change to the *admin* database**
 `use admin`
 
-Create a *user admin* which will be granted all permissions an all databases
+**Create a *user admin* which will be granted all permissions an all databases**
 
 ```sql
 db.createUser(
@@ -66,7 +68,7 @@ db.createUser(
 )
 ```
 
-Create a *cluster admin* which will be granted all permissions an the cluster
+**Create a *cluster admin* which will be granted all permissions an the cluster**
 
 ```sql
 db.createUser(
@@ -78,7 +80,7 @@ db.createUser(
 )
 ```
 
-Create a *graylog-user* which will be use to connect graylog to the MongoDB replica Shard
+**Create a *graylog-user* which will be use to connect graylog to the MongoDB replica Shard**
 `use graylog-database`
 
 ```sql
@@ -99,7 +101,7 @@ Let's now create a keyfile that the nodes will use as an authentication system. 
 
 > :warning: On ONE node !
 
-Create a directory to add the key and then generate the key.
+**Create a directory to add the key and then generate the key.**
 
 ```shell
 mkdir -p /var/lib/graylog-database/mongo-security/
@@ -108,7 +110,7 @@ openssl rand -base64 768 > /var/lib/graylog-database/mongo-security/mongo-key
 
 Paste that key in the same directory on the other machines, considering you did this on `graymongo1.nerd.mooc`.
 
-Create the same directory then paste the key and then chmod/chown it !
+**Create the same directory then paste the key and then chmod/chown it !**
 ```shell
 ssh root@graymongo2.nerd.mooc "mkdir -p /var/lib/graylog-database/mongo-security/" &&
 scp /var/lib/graylog-database/mongo-security/mongo-key root@graymongo2.nerd.mooc:/var/lib/graylog-database/mongo-security/mongo-key &&
@@ -138,27 +140,32 @@ systemctl restart mongod.service
 
 > :warning: On the PRIMARY node !
 
+**Connect to MongoDB**
 ```shell
 mongo
 ```
 
+**Then switch this node to secodary**
 ```sql
 rs.stepdown()
 ```
 
+**Restart the service**
 ```shell
 systemctl restart mongod.service
 ```
 
 Then on all nodes, comment the `transitionToAuth: true` to disable unsecured connections.
 
+**Edit `/etc/mongod.conf`**
 ```yml
 security:
   keyFile: /var/lib/graylog-database/mongo-security/mongo-key
 # transitionToAuth: true
 ```
 
-Restart all the nodes and you're good.
+**Restart all the nodes**
 ```shell
 systemctl restart mongod.service
 ```
+and you're good !
