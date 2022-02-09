@@ -1,5 +1,7 @@
 # World Map
 
+You want to have a cool world map on your dashboards that shows where does the villaines come from ? Say no more !
+
 You must create an account on [dev.maxming.com](https://dev.maxmind.com/geoip/geolite2-free-geolocation-data?lang=en) to be able to download the GeoLite2-City.mmdb. Once you subscribed, you'll receive a mail that will help you go through the process.
 Go to the download page and the Geo2Lite City GZIP Binary on your computer.
 
@@ -104,11 +106,11 @@ rule "GeoIP | destination_ip"
 when
 	has_field("destination_ip")
 	AND NOT 
-    ( // exclude internal IPs
+    	( // exclude internal IPs
 		has_field("destination_ip_is_internal")
-		AND
+	AND
 		to_bool($message.destination_ip_is_internal)
-    )
+    	)
 then
 	let geo = lookup("geoip-lookup", to_string($message.destination_ip));
 	set_field("destination_ip_geolocation", geo["coordinates"]);
@@ -129,11 +131,11 @@ rule "GeoIP | source_ip"
 when
 	has_field("source_ip")
 	AND NOT 
-	  ( // exclude internal IPs
+	( // exclude internal IPs
 		has_field("source_ip_is_internal")
-		AND
+	AND
 		to_bool($message.source_ip_is_internal)
-    )
+    	)
 then
 	let geo = lookup("geoip-lookup", to_string($message.source_ip));
 	set_field("source_ip_geolocation", geo["coordinates"]);
@@ -168,6 +170,8 @@ Doesn't matter, there is no other stage.
 
 ### New aggregation
 
+![world map](https://raw.githubusercontent.com/nerd-in-a-mooc/graylog/main/images/geoip_source_ip_geolocation_map.png)
+
 - Rollup Columns
 	- Direction : ROW
 	- Field : `source_ip_geolocation`
@@ -179,6 +183,8 @@ Doesn't matter, there is no other stage.
 	- Zoom : 2 (you can choose how you want to see the world !)
 	- Latitude : Scroll around the map with your mouse
 	- Longitude : Scroll around the map with your mouse
+
+Don't forget to properly name it !
 
 ### destination_ip_geolocation
 
