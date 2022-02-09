@@ -169,17 +169,17 @@ GeoIP | destination_ip
 ## source_ip_geolocation
 
 Give it a cool and clear title such as "Source IP" !
-![alt text](https://raw.githubusercontent.com/nerd-in-a-mooc/graylog/main/images/geoip_source_ip_geolocation_map.png)
+![world map](https://raw.githubusercontent.com/nerd-in-a-mooc/graylog/main/images/geoip_source_ip_geolocation_map.png)
 
 
-### Rollup Columns
+**Rollup Columns**
 	- Field : `source_ip_geolocation`
 	- Limit : 15 (You can change that value : it will change the way the dots are aggregated on the map
 	
-### Metrics
+**Metrics**
 	- Function : Count
 
-### Visualization
+**Visualization**
 	- Type : World Map
 
 Zoom, latitude and longitude are automatically set when you move around the map with your mouse.
