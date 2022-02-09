@@ -108,11 +108,11 @@ rule "GeoIP | destination_ip"
 when
 	has_field("destination_ip")
 	AND NOT 
-    ( // exclude internal IPs
+    	( // exclude internal IPs
 		has_field("destination_ip_is_internal")
-		AND
+	AND
 		to_bool($message.destination_ip_is_internal)
-    )
+    	)
 then
 	let geo = lookup("geoip-lookup", to_string($message.destination_ip));
 	set_field("destination_ip_geolocation", geo["coordinates"]);
@@ -133,11 +133,11 @@ rule "GeoIP | source_ip"
 when
 	has_field("source_ip")
 	AND NOT 
-	  ( // exclude internal IPs
+	( // exclude internal IPs
 		has_field("source_ip_is_internal")
-		AND
+	AND
 		to_bool($message.source_ip_is_internal)
-    )
+    	)
 then
 	let geo = lookup("geoip-lookup", to_string($message.source_ip));
 	set_field("source_ip_geolocation", geo["coordinates"]);
@@ -168,22 +168,22 @@ GeoIP | destination_ip
 
 ## source_ip_geolocation
 
-Give it a cool and clear title such as "Source IP" !
+
 ![world map](https://raw.githubusercontent.com/nerd-in-a-mooc/graylog/main/images/geoip_source_ip_geolocation_map.png)
 
+Give it a cool and clear title such as "Source IP" !
 
 **Rollup Columns**
-	- Field : `source_ip_geolocation`
-	- Limit : 15 (You can change that value : it will change the way the dots are aggregated on the map
+- Field : `source_ip_geolocation`
+- Limit : 15 (You can change that value : it will change the way the dots are aggregated on the map
 	
 **Metrics**
-	- Function : Count
+- Function : Count
 
 **Visualization**
-	- Type : World Map
+- Type : World Map
 
 Zoom, latitude and longitude are automatically set when you move around the map with your mouse.
-
 
 ### destination_ip_geolocation
 
