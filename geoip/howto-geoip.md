@@ -162,9 +162,7 @@ GeoIP | destination_ip
 
 # Dashboard
 
-## Creating a new widget
-
-New aggregation.
+- New aggregation.
 
 ## Configuration
 
