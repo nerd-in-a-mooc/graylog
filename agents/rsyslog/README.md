@@ -3,7 +3,7 @@ You can explore the main configuration file to define what you whant to log.
 
 Feel free to use one of my configurations to get a good start with rsyslog.
 
-Remember to restart the service when you are done.
+**Remember to restart the service when you are done.**
 ```shell
 systemctl restart rsyslogd.service
 ```
@@ -24,7 +24,7 @@ apt -y install gnutls
 **And paste [this configuration](https://github.com/nerd-in-a-mooc/graylog/blob/main/agents/rsyslog/rsyslog-tls.conf) if you like it.**
 
 ---
-# RSYSLOG/TLS
+# RSYSLOG/TCP
 If you don't have certificate or if you don't want to use TLS, you should use TCP.
 
 **You need to create a configuration under**
@@ -34,7 +34,7 @@ If you don't have certificate or if you don't want to use TLS, you should use TC
 **And paste [this configuration](https://github.com/nerd-in-a-mooc/graylog/blob/main/agents/rsyslog/rsyslog-tcp.conf) if you like it.**
 
 ---
-# RSYSLOG/TLS
+# RSYSLOG/UDP
 If for some odd reason you cannot either use TLS or TCP, you can use UDP. This is not recommanded.
 
 **You need to create a configuration under**
