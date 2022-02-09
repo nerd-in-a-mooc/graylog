@@ -152,11 +152,13 @@ end
 
 - **Stage**
 1
+
 - **Continue processing on next stage when**
 Doesn't matter, there is no other stage.
+
 - **Stage rules**
-GeoIP | source_ip
-GeoIP | destination_ip
+	- GeoIP | source_ip
+	- GeoIP | destination_ip
 
 **Is it working ?**
 
@@ -165,6 +167,7 @@ GeoIP | destination_ip
 ## source_ip_geolocation
 
 ### New aggregation
+
 - Rollup Columns
 	- Direction : ROW
 	- Field : `source_ip_geolocation`
@@ -179,7 +182,7 @@ GeoIP | destination_ip
 
 ### destination_ip_geolocation
 
-Duplicate the first one you created and just change the field `source_ip_geolocation` to `destination_ip_geolocation`
+Duplicate the first one you created and just change the field `source_ip_geolocation` to `destination_ip_geolocation` !
 
 # Sources
 
