@@ -1,5 +1,7 @@
 # MongoDB : A straightforward configuration to get Graylog up and ready
 
+Graylog works with 4.x MongoDB instances.
+
 Our Graylog and MongoDB hosts are called 
 - graymongo1.nerd.mooc
 - graymongo2.nerd.mooc
