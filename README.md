@@ -1,5 +1,5 @@
 # Graylog
 
-Elasticsearch
-MongoDB
-Graylog
+- Elasticsearch
+- MongoDB
+- Graylog
