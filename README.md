@@ -168,7 +168,7 @@ GeoIP | destination_ip
 
 ### Creating a new widget
 
-(https://raw.githubusercontent.com/nerd-in-a-mooc/graylog/main/images/geoip_source_ip_geolocation_map.png)
+![alt text](https://raw.githubusercontent.com/nerd-in-a-mooc/graylog/main/images/geoip_source_ip_geolocation_map.png)
 
 ### Configuration
 
