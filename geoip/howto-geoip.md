@@ -168,8 +168,6 @@ Doesn't matter, there is no other stage.
 
 ## source_ip_geolocation
 
-### New aggregation
-
 ![world map](https://raw.githubusercontent.com/nerd-in-a-mooc/graylog/main/images/geoip_source_ip_geolocation_map.png)
 
 - Rollup Columns
