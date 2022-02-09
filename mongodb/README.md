@@ -1,4 +1,5 @@
-# MongoDB : A straightforward configuration to get Graylog up and ready
+# MongoDB
+## A straightforward configuration to get Graylog up and ready
 
 Graylog works with 4.x MongoDB instances.
 
