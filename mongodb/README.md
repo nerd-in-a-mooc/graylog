@@ -36,13 +36,55 @@ Connect to MongoDB
 
 This node will become master when the cluster first starts.
 ```
-rs.initiate( {
+rs.initiate(
+{
    _id : "rs01",
    members: [
       { _id: 0, host: "graymongo1:27017" },
       { _id: 1, host: "graymongo2:27017" },
       { _id: 2, host: "graymongo3:27017" }
    ]
-})
+}
+)
+```
 
+## RBAC
+
+`mongo`
+`use admin`
+
+Create a *user admin* which will be granted all permissions an all databases
+```
+db.createUser(
+{
+   user: "UserAdminNIAM",
+   pwd: passwordPrompt(),
+   roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]
+}
+)
+```
+
+Create a *cluster admin* which will be granted all permissions an the cluster
+```
+db.createUser(
+{
+   user: "ClusterAdminNIAM",
+   pwd: passwordPrompt(),
+   roles: [ { role: "clusterAdmin", db: "admin" } ]
+}
+)
+```
+
+Create a *graylog-user* which will be use to connect graylog to the MongoDB replica Shard
+`use graylog-database`
+```
+db.createUser(
+{
+   user: "graylog-user",
+   pwd: passwordPrompt(),
+   roles: [
+      { role: "readWrite", db: "graylog-database" },
+      { role: "dbAdmin", db: "graylog-database" } ]
+}
+)
 ```
