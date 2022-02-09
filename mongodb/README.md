@@ -88,3 +88,27 @@ db.createUser(
 }
 )
 ```
+
+## Secure
+
+Let's now create a keyfile that the nodes will use as an authentication system. This is a password shared only by the nodes in the MongoDB cluster, allowing cluster members to authenticate themselves. It is also possible to use an internal CA to generate x.509 certificates or to use "real" certificates. This higher form of security is more than desirable for a cluster using an unsecured network. 
+
+> :warning: On ONE node !
+
+Create a directory to add the key and then generate the key.
+```
+mkdir -p /var/lib/graylog-database/mongo-security/
+openssl rand -base64 768 > /var/lib/graylog-database/mongo-security/mongo-key
+```
+
+Paste that key in the same directory on the other machines, considering you did this on `graymongo1.nerd.mooc`.
+
+```
+ssh root@graymongo2.nerd.mooc "mkdir -p /var/lib/graylog-database/mongo-security/" &&
+    scp /var/lib/graylog-database/mongo-security/mongo-key root@graymongo2.nerd.mooc:/var/lib/graylog-database/mongo-security/mongo-key
+```
+
+```
+ssh root@graymongo3.nerd.mooc "mkdir -p /var/lib/graylog-database/mongo-security/" &&
+    scp /var/lib/graylog-database/mongo-security/mongo-key root@graymongo3.nerd.mooc:/var/lib/graylog-database/mongo-security/mongo-key
+```
