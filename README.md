@@ -4,7 +4,7 @@ This repository is made to help anyone who whants to get into Graylog.
 
 ## World Map
 
-You must create an account on [dev.maxming.com(https://dev.maxmind.com/geoip/geolite2-free-geolocation-data?lang=en)] to be able to download the GeoLite2-City.mmdb. Once you subscribed, you'll receive a mail that will help you go through the process.
+You must create an account on [dev.maxming.com](https://dev.maxmind.com/geoip/geolite2-free-geolocation-data?lang=en) to be able to download the GeoLite2-City.mmdb. Once you subscribed, you'll receive a mail that will help you go through the process.
 Go to the download page and the Geo2Lite City GZIP Binary on your computer.
 
 <aside>
