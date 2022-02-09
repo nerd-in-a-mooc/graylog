@@ -2,7 +2,7 @@
 
 This repository is made to help anyone who whants to get into Graylog.
 
-# World Map
+## World Map
 
 You must create an account on [dev.maxming.com(https://dev.maxmind.com/geoip/geolite2-free-geolocation-data?lang=en)] to be able to download the GeoLite2-City.mmdb. Once you subscribed, you'll receive a mail that will help you go through the process.
 Go to the download page and the Geo2Lite City GZIP Binary on your computer.
@@ -24,11 +24,11 @@ rm /etc/graylog/server/GeoLite2-City_*.tar.gz
 mv /etc/graylog/server/GeoLite2-City_*/ /etc/graylog/server/
 ```
 
-# On the Graylog UI
+## On the Graylog UI
 
-## Lookup Table
+### Lookup Table
 
-### Data Adapter
+#### Data Adapter
 
 - System
     - Lookup Tables
@@ -52,7 +52,7 @@ City Database
 - **Refresh File**
 Nothing to do here
 
-### Lookup Cache
+#### Lookup Cache
 
 - System
     - Lookup Tables
@@ -90,14 +90,14 @@ geoip-data-adapter
 - **Cache**
 geoip-cache
 
-## Pipelines
+### Pipelines
 
 - System
     - Piplines
         - Manage Rules
             - Create Rule
 
-### Destination IP
+#### Destination IP
 
 - **Title**
 GeoIP for destination IP
@@ -122,7 +122,7 @@ then
 end
 ```
 
-### Source IP
+#### Source IP
 
 - **Title**
 GeoIP for source IP
@@ -147,7 +147,7 @@ then
 end
 ```
 
-### Pipeline New Stage
+#### Pipeline New Stage
 
 - System
     - Pipelines
@@ -164,23 +164,23 @@ GeoIP | destination_ip
 
 **Is it working ?**
 
-# Dashboard
+## Dashboard
 
-## Creating a new widget
+### Creating a new widget
 
 New aggregation.
 
 
 
-## Configuration
+### Configuration
 
-### source_ip_geolocation
+#### source_ip_geolocation
 
 
 
-### destination_ip_geolocation
+#### destination_ip_geolocation
 
-# Sources
+## Sources
 
 - [How to set up Graylog GeoIP Configuration](https://www.graylog.org/post/how-to-set-up-graylog-geoip-configuration)
 - [GeoIP does not work](https://community.graylog.org/t/graylog-4-0-5-geoip-does-not-work/19916/8)
