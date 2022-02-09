@@ -30,7 +30,7 @@ mv /etc/graylog/server/GeoLite2-City_*/ /etc/graylog/server/
     - Lookup Tables
         - Data Adapters
             - Create Data Adapter
-![alt text](https://raw.githubusercontent.com/nerd-in-a-mooc/graylog/main/images/data_adapter.png)
+
 - **Data Adapter Type**
 Geo IP - MaxMind™ Databases
 - **Title**
