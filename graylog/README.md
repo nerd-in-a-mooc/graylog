@@ -24,40 +24,72 @@ cp /etc/graylog/server/server.conf /etc/graylog/server/server.conf.bak
 **Edit the configuration file before starting the service**
 Graylog NEEDS some tweaks before starting
 
+> :warning: On ONE node !
 ## Line 47
 ```yml
 is_master = true
+```
+One node will be the master. 
+
+Type this on other nodes. 
+```yml
+is_master = false
 ```
 
 ## Line 57
 ```yml
 password_secret = 
 ```
+
+You must set a password here to secure the stored password. 
+
+**Let's do that by typing the following command..**
 ```shell
 pwgen -N 1 -s 96
 ```
+**..and paste the output at line 57 of the configuration file on all nodes ⚠️ !**
 
 ## Line 68
 ```yml
 root_password = 
 ```
+This is the hash of the global admin password.
+
+Type this command 
+```shell
+echo -n "Enter Password: " && head -1 </dev/stdin | tr -d '\n' | sha256sum | cut -d" " -f1
+```
+Then enter your root password when prompted. The output will be the hash that you will need to copy on the three nodes ⚠️ !
 
 ## Line 76
 ```yml
 root_timezone = Europ/Paris
 ```
+This is the timezone I currently live in.
 
 ## Line 105
 ```yml
 http_bind_address = ip.of.the.node
 ```
+If you have several NIC, you should use one of them to bind the graylog server.
 
 ## Line 190
 ```yml
 elasticsearch_hosts = http://elastic1.nerd.mooc:9200,http://elastic2.nerd.mooc:9200,http://elastic3.nerd.mooc:9200, 
 ```
+This is the list of our elasticsearch instances.
+
 
 ## Line 550
 ```yml
 mongodb_uri = mongodb://graylog-user:password@graymongo1:27017,graymongo2:27017,graymongo3:27017/graylog?replicaSet=rs01
+```
+
+This is the list of our MongoDB instances.
+
+## Start the server
+```shell
+systemctl enable graylog-server
+systemctl start graylog-server
+systemctl status graylog-server
 ```
