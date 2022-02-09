@@ -162,13 +162,24 @@ GeoIP | destination_ip
 
 # Dashboard
 
-- New aggregation.
+## source_ip_geolocation
 
-## Configuration
-
-### source_ip_geolocation
+### New aggregation
+- Rollup Columns
+	- Direction : ROW
+	- Field : `source_ip_geolocation`
+	- Limit : 15 (you can twist that number to aggregate more or less informations per location)
+- Metrics
+	- Function : Count
+- Visualization
+	- Type : World Map
+	- Zoom : 2 (you can choose how you want to see the world !)
+	- Latitude : Scroll around the map with your mouse
+	- Longitude : Scroll around the map with your mouse
 
 ### destination_ip_geolocation
+
+Duplicate the first one you created and just change the field `source_ip_geolocation` to `destination_ip_geolocation`
 
 # Sources
 
