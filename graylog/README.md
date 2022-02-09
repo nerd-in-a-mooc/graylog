@@ -24,12 +24,12 @@ cp /etc/graylog/server/server.conf /etc/graylog/server/server.conf.bak
 **Edit the configuration file before starting the service**
 Graylog NEEDS some tweaks before starting
 
-Line 47
+## Line 47
 ```yml
 is_master = true
 ```
 
-Line 57
+## Line 57
 ```yml
 password_secret = 
 ```
@@ -37,27 +37,27 @@ password_secret =
 pwgen -N 1 -s 96
 ```
 
-Line 68
+## Line 68
 ```yml
 root_password = 
 ```
 
-Line 76
+## Line 76
 ```yml
 root_timezone = Europ/Paris
 ```
 
-Line 105
+## Line 105
 ```yml
 http_bind_address = ip.of.the.node
 ```
 
-Line 190
+## Line 190
 ```yml
 elasticsearch_hosts = http://elastic1.nerd.mooc:9200,http://elastic2.nerd.mooc:9200,http://elastic3.nerd.mooc:9200, 
 ```
 
-Line 550
+## Line 550
 ```yml
 mongodb_uri = mongodb://graylog-user:password@graymongo1:27017,graymongo2:27017,graymongo3:27017/graylog?replicaSet=rs01
 ```
