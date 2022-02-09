@@ -30,6 +30,11 @@ Dont forget to change the hostname at line 23.
 ## Replica Shard
 > :warning: On ONE node !
 
+Connect to MongoDB
+
+`mongo`
+
+This node will become master when the cluster first starts.
 ```
 rs.initiate( {
    _id : "rs01",
