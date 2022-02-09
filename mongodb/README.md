@@ -103,12 +103,24 @@ openssl rand -base64 768 > /var/lib/graylog-database/mongo-security/mongo-key
 
 Paste that key in the same directory on the other machines, considering you did this on `graymongo1.nerd.mooc`.
 
-```
+Create the same directory then paste the key and then chmod/chown it !
+```shell
 ssh root@graymongo2.nerd.mooc "mkdir -p /var/lib/graylog-database/mongo-security/" &&
-    scp /var/lib/graylog-database/mongo-security/mongo-key root@graymongo2.nerd.mooc:/var/lib/graylog-database/mongo-security/mongo-key
+scp /var/lib/graylog-database/mongo-security/mongo-key root@graymongo2.nerd.mooc:/var/lib/graylog-database/mongo-security/mongo-key &&
+ssh root@graymongo3.nerd.mooc "chown -R mongodb:mongodb /var/lib/graylog-database/mongo-security/ && chmod -R 700 /var/lib/graylog-database/mongo-security/"
+```
+```shell
+ssh root@graymongo3.nerd.mooc "mkdir -p /var/lib/graylog-database/mongo-security/" &&
+scp /var/lib/graylog-database/mongo-security/mongo-key root@graymongo3.nerd.mooc:/var/lib/graylog-database/mongo-security/mongo-key &&
+ssh root@graymongo3.nerd.mooc "chown -R mongodb:mongodb /var/lib/graylog-database/mongo-security/ && chmod -R 700 /var/lib/graylog-database/mongo-security/"
 ```
 
-```
-ssh root@graymongo3.nerd.mooc "mkdir -p /var/lib/graylog-database/mongo-security/" &&
-    scp /var/lib/graylog-database/mongo-security/mongo-key root@graymongo3.nerd.mooc:/var/lib/graylog-database/mongo-security/mongo-key
+> :warning: On the three nodes !
+
+Edit the configuration file to allow secure authentication by uncommneting lines 29 to 31. `Transition to Auth : true` lets us test our configuration by allowing both secured / unsecured communication between nodes.
+
+```yml
+security:
+  keyFile: /var/lib/graylog-database/mongo-security/mongo-key
+  transitionToAuth: true
 ```
