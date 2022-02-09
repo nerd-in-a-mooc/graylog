@@ -164,21 +164,32 @@ GeoIP | destination_ip
 
 **Is it working ?**
 
-## Dashboard
+# Dashboard
 
-### Creating a new widget
+## source_ip_geolocation
 
+Give it a cool and clear title such as "Source IP" !
 ![alt text](https://raw.githubusercontent.com/nerd-in-a-mooc/graylog/main/images/geoip_source_ip_geolocation_map.png)
 
-### Configuration
 
-#### source_ip_geolocation
+### Rollup Columns
+	- Field : `source_ip_geolocation`
+	- Limit : 15 (You can change that value : it will change the way the dots are aggregated on the map
+	
+### Metrics
+	- Function : Count
+
+### Visualization
+	- Type : World Map
+
+Zoom, latitude and longitude are automatically set when you move around the map with your mouse.
 
 
+### destination_ip_geolocation
 
-#### destination_ip_geolocation
+Duplicate the widget, change the title and change the field : `source_ip_geolocation` for `destination_ip_geolocation`
 
-## Sources
+# Sources
 
 - [How to set up Graylog GeoIP Configuration](https://www.graylog.org/post/how-to-set-up-graylog-geoip-configuration)
 - [GeoIP does not work](https://community.graylog.org/t/graylog-4-0-5-geoip-does-not-work/19916/8)
