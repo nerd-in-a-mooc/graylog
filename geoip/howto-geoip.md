@@ -1,15 +1,12 @@
 # World Map
 
-You want to have a cool world map on your dashboards that shows where does the villaines come from ? Say no more !
+**You want to have a cool world map on your dashboards that shows where does the villaines come from ? Say no more !**
 
 You must create an account on [dev.maxming.com](https://dev.maxmind.com/geoip/geolite2-free-geolocation-data?lang=en) to be able to download the GeoLite2-City.mmdb. Once you subscribed, you'll receive a mail that will help you go through the process.
 Go to the download page and the Geo2Lite City GZIP Binary on your computer.
 
-<aside>
-💡 This should be done on all Graylog servers !
-</aside>
 
-Upload that archive to your Graylog servers
+💡 Upload that archive to your Graylog server(s)
 ```bash
 scp GeoLite2-City_*.tar.gz root@server:/etc/graylog/server/
 ```
