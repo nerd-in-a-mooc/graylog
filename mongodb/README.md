@@ -1,8 +1,12 @@
 # MongoDB : A straightforward configuration to get Graylog up and ready
 
-> :warning: On the three Nodes !
+Our Graylog and MongoDB hosts are called 
+- graymongo1.nerd.mooc
+- graymongo2.nerd.mooc
+- graymongo3.nerd.mooc
 
-### Install
+## Install
+> :warning: On the three Nodes !
 
 ```
 apt install -y gnupg
@@ -12,7 +16,8 @@ apt update && apt install -y mongodb-org
 systemctl enable mongod && systemctl start mongod
 systemctl status mongod -l --no-pager
 ```
-### Configuration
+## Configuration
+> :warning: On the three Nodes !
 
 Before we go any further, let's save the main configuration file.
 ```
@@ -22,3 +27,17 @@ mv /etc/mongod.conf /etc/mongod.conf.bak
 Let's now edit `/etc/mongod.conf` with your favorite text editor and paste this configuration file inside.
 Dont forget to change the hostname at line 23.
 
+## Replica Shard
+> :warning: On ONE node !
+
+```
+rs.initiate( {
+   _id : "rs01",
+   members: [
+      { _id: 0, host: "graymongo1:27017" },
+      { _id: 1, host: "graymongo2:27017" },
+      { _id: 2, host: "graymongo3:27017" }
+   ]
+})
+
+```
