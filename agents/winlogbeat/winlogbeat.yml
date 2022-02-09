@@ -1,0 +1,22 @@
+output.logstash:
+   hosts: ["graylog.nerd.mooc:5044"]
+   ssl.certificate_authorities: ["C:\\Program Files (x86)\\Winlogbeat\\cert.pem"]
+
+path:
+  data: C:\Program Files (x86)\Winlogbeat\data
+  logs: C:\Program Files (x86)\Winlogbeat\logs
+
+tags:
+ - windows
+ 
+winlogbeat.event_logs:
+  - name: 		Application
+    level: 		critical, error, warning
+    ignore_older: 	48h
+    
+  - name: 		Security
+    ignore_older: 	48h
+
+  - name: 		System
+    level: 		critical, error, warning
+    ignore_older: 	48h
