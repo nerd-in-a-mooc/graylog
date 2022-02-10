@@ -1,4 +1,4 @@
-rule "Windows | Account : name changed"
+rule "Windows | User : name changed"
 when
     // assumes you have checked for
     // windows-security-information
