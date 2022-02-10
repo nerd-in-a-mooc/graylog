@@ -1,14 +1,13 @@
 rule "Winlogbeat | Field Normalizing"
 when
     // Only run this rule on winlogbeat agents.
-    has_field("agent_type") 
-    AND 
-    contains(to_string($message.event_type), "winlogbeat")
+    contains("winlogbeat",to_string($message.agent_type))
 then
     // General field normalizing.
     rename_field("event_code", "event_id");
     rename_field("host_name", "hostname");
     rename_field("log_level", "level");
+    
     // Normalizing winlog. Basically removing the "winlog" bs.
     rename_field("winlog_channel", "category");
     rename_field("winlog_computer_name", "FQDN");
@@ -17,6 +16,7 @@ then
     rename_field("winlog_event_data_TargetLogonId", "logon_id");
     rename_field("winlog_event_data_TargetUserName", "user_name");
     rename_field("winlog_event_data_TargetUserSid", "user_sid");
+    rename_field("winlog_keywords", "keywords");
     rename_field("winlog_process_pid", "process_pid");
     rename_field("winlog_process_thread_id", "process_thread_id");
     rename_field("winlog_provider_guid", "provider_guid");
@@ -34,6 +34,8 @@ then
     remove_field("winlog_event_id");
     remove_field("winlog_opcode");
     remove_field("winlog_task");
+    remove_field("winlog_api");
+    remove_field("");
     // Leaving a blank one as a template
     remove_field("");
 end
