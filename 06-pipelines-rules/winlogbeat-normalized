@@ -7,15 +7,18 @@ then
     rename_field("event_code", "event_id");
     rename_field("host_name", "hostname");
     rename_field("log_level", "level");
-    
     // Normalizing winlog. Basically removing the "winlog" bs.
     rename_field("winlog_channel", "category");
-    rename_field("winlog_computer_name", "FQDN");
     rename_field("winlog_event_data_LogonType", "logon_type");
-    rename_field("winlog_event_data_TargetDomainName", "domain_name");
+    rename_field("winlog_event_data_PrivilegeList", "privilege_list");
+    rename_field("winlog_event_data_TargetDomainName", "target_domain_name");
     rename_field("winlog_event_data_TargetLogonId", "logon_id");
-    rename_field("winlog_event_data_TargetUserName", "user_name");
-    rename_field("winlog_event_data_TargetUserSid", "user_sid");
+    rename_field("winlog_event_data_TargetUserName", "target_user_name");
+    rename_field("winlog_event_data_SubjectDomainName", "subject_domain_name");
+    rename_field("winlog_event_data_SubjectLogonId", "subject_logon_id");
+    rename_field("winlog_event_data_SubjectUserName", "subject_user_name");
+    rename_field("winlog_event_data_SubjectUserSid", "subject_user_sid");
+    rename_field("winlog_event_data_TargetUserSid", "target_user_sid");
     rename_field("winlog_keywords", "keywords");
     rename_field("winlog_process_pid", "process_pid");
     rename_field("winlog_process_thread_id", "process_thread_id");
@@ -23,7 +26,7 @@ then
     rename_field("winlog_provider_name", "provider_name");
     rename_field("winlog_record_id", "record_id");
     // Leaving a blank one as a template
-    //rename_field("", "");
+    // rename_field("", "");
 
     // Removing files that duplicates informations.
     remove_field("@metadata_beat");
@@ -34,8 +37,6 @@ then
     remove_field("winlog_event_id");
     remove_field("winlog_opcode");
     remove_field("winlog_task");
-    remove_field("winlog_api");
-    remove_field("");
     // Leaving a blank one as a template
-    remove_field("");
+    // remove_field("");
 end
