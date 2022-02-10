@@ -1,0 +1,15 @@
+rule "Windows | User : deleted"
+when
+    // assumes you have checked for
+    // windows-security-information
+    (to_string($message.winlog_event_id) == "4726") &&
+    // RapidRecovery backup enables/deletes accounts for operation overnight
+    NOT starts_with(value: to_string($message.winlog_event_data_TargetUserName), prefix:"ReplayEngine")
+then
+    // Build Alert structures
+    // Create subject of alert
+    let subject_0 = concat("USER DELETED: ", to_string($message.winlog_event_data_TargetUserName));
+    set_field("event_digest", subject_0);
+    // Route to stream Windows Alerts
+    route_to_stream(id: "62028d804c903c07802f5a78");
+end
