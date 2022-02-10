@@ -1,0 +1,39 @@
+rule "Winlogbeat | Field Normalizing"
+when
+	// Only run this rule on winlogbeat agents.
+	has_field("agent_type") 
+  AND 
+	contains(to_string($message.event_type), "winlogbeat"
+then
+  // General field normalizing.
+  rename_field("event_code", "event_id");
+  rename_field("host_name", "hostname");
+	rename_field("log_level", "level");
+  // Normalizing winlog. Basically removing the "winlog" bs.
+  rename_field("winlog_channel", "category");
+	rename_field("winlog_computer_name", "FQDN");
+  rename_field("winlog_event_data_LogonType", "logon_type");
+  rename_field("winlog_event_data_TargetDomainName", "domain_name");
+  rename_field("winlog_event_data_TargetLogonId", "logon_id");
+  rename_field("winlog_event_data_TargetUserName", "user_name");
+  rename_field("winlog_event_data_TargetUserSid", "user_sid");
+  rename_field("winlog_process_pid", "process_pid");
+  rename_field("winlog_process_thread_id", "process_thread_id");
+  rename_field("winlog_provider_guid", "provider_guid");
+  rename_field("winlog_provider_name", "provider_name");
+  rename_field("winlog_record_id", "record_id");
+  // Leaving a blank one as a template
+  //rename_field("", "");
+  
+  // Removing files that duplicates informations.
+  remove_field("@metadata_beat");
+  remove_field("@metadata_type");
+  remove_field("@metadata_version");
+  remove_field("@timestamp");
+  remove_field("winlog_computer_name");
+  remove_field("winlog_event_id");
+  remove_field("winlog_opcode");
+  remove_field("winlog_task");
+  // Leaving a blank one as a template
+  remove_field("");
+end
