@@ -1,0 +1,31 @@
+--- [Event Definition] ---------------------------
+
+${event_definition_title}
+
+--- [Event] --------------------------------------
+
+Timestamp:
+${event.timestamp}
+
+Message:
+${event.message}
+
+Source:
+${event.source}
+
+Priority:
+${event.priority}
+
+Alert:
+${event.alert}
+
+Timestamp Processing:
+${event.timestamp}
+
+${if backlog}
+--- [Backlog] ------------------------------------
+Last messages accounting for this alert:
+${foreach backlog message}
+${message.timestamp}  ::  ${message.source}  ::  ${message.message}
+${message.message}
+${end}${end}
