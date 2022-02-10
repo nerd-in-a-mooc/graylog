@@ -16,12 +16,6 @@ ${event.source}
 Priority:
 ${event.priority}
 
-Alert:
-${event.alert}
-
-Timestamp Processing:
-${event.timestamp}
-
 ${if backlog}
 --- [Backlog] ------------------------------------
 Last messages accounting for this alert:
