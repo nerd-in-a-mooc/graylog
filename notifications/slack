@@ -13,9 +13,6 @@ ${event.message}
 Source:
 ${event.source}
 
-Priority:
-${event.priority}
-
 ${if backlog}
 --- [Backlog] ------------------------------------
 Last messages accounting for this alert:
