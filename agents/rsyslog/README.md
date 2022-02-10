@@ -18,7 +18,7 @@ apt -y install gnutls
 
 **Then you need to create a configuration under**
 ```shell
-/etc/rsyslog/rsyslog.d/whateveruwant-tls.conf
+/etc/rsyslog.d/whateveruwant-tls.conf
 ```
 
 **And paste [this configuration](https://github.com/nerd-in-a-mooc/graylog/blob/main/agents/rsyslog/rsyslog-tls.conf) if you like it.**
@@ -29,7 +29,7 @@ If you don't have certificate or if you don't want to use TLS, you should use TC
 
 **You need to create a configuration under**
 ```shell
-/etc/rsyslog/rsyslog.d/whateveruwant-tcp.conf
+/etc/rsyslog.d/whateveruwant-tcp.conf
 ```
 **And paste [this configuration](https://github.com/nerd-in-a-mooc/graylog/blob/main/agents/rsyslog/rsyslog-tcp.conf) if you like it.**
 
@@ -39,6 +39,6 @@ If for some odd reason you cannot either use TLS or TCP, you can use UDP. This i
 
 **You need to create a configuration under**
 ```shell
-/etc/rsyslog/rsyslog.d/whateveruwant-udp.conf
+/etc/rsyslog.d/whateveruwant-udp.conf
 ```
 **And paste [this configuration](https://github.com/nerd-in-a-mooc/graylog/blob/main/agents/rsyslog/rsyslog-udp.conf) if you like it.**
