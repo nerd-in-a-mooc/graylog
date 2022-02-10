@@ -7,7 +7,7 @@ then
     rename_field("event_code", "event_id");
     rename_field("host_name", "hostname");
     rename_field("log_level", "level");
-    // Normalizing winlog. Basically removing the "winlog" bs.
+    // Normalizing winlog. Basically removing the "winlog" prefix.
     rename_field("winlog_channel", "category");
     rename_field("winlog_event_data_LogonType", "logon_type");
     rename_field("winlog_event_data_PrivilegeList", "privilege_list");
@@ -25,7 +25,7 @@ then
     rename_field("winlog_provider_guid", "provider_guid");
     rename_field("winlog_provider_name", "provider_name");
     rename_field("winlog_record_id", "record_id");
-    // Leaving a blank one as a template
+    // Leaving a blank one as a template.
     // rename_field("", "");
 
     // Removing files that duplicates informations.
@@ -37,6 +37,6 @@ then
     remove_field("winlog_event_id");
     remove_field("winlog_opcode");
     remove_field("winlog_task");
-    // Leaving a blank one as a template
+    // Leaving a blank one as a template.
     // remove_field("");
 end
