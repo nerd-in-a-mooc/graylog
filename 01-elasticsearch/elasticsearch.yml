@@ -1,6 +1,6 @@
 # ---------------------------------- Cluster -----------------------------------
 #
-cluster.name: graylog
+cluster.name: graylog-NIAM
 #
 # ------------------------------------ Node ------------------------------------
 #
@@ -20,9 +20,8 @@ http.port: 9200
 #
 # --------------------------------- Discovery ----------------------------------
 #
-discovery.seed_hosts: ["elastic01.example.net"]
+discovery.seed_hosts: ["elastic01.nerd.mooc"]
 #
 # ---------------------------------- Graylog -----------------------------------
 #
 action.auto_create_index: false
-
