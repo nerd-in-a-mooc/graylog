@@ -1,6 +1,9 @@
 output.logstash:
-   hosts: ["graylog.nerd.mooc:5044"]
-   ssl.certificate_authorities: ["C:\\Program Files (x86)\\Winlogbeat\\cert.pem"]
+  # For TLS : Your CA certificate should be in .pem format and encoded in BASE64
+  hosts: ["graylog.nerd.mooc:25044"]
+  ssl.certificate_authorities: ["C:\\Program Files (x86)\\Winlogbeat\\cert.pem"]
+  # For PLAIN LOGS
+  hosts: ["graylog.nerd.mooc:15044"]
 
 path:
   data: C:\Program Files (x86)\Winlogbeat\data
