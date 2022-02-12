@@ -13,7 +13,7 @@ This considerd as the best practice. Logs will be encrypted on the network and w
 
 **You need to install this**
 ```shell
-apt -y install gnutls
+apt -y install rsyslog-gnutls
 ```
 
 **Then you need to create a configuration under**
