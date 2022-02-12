@@ -1,12 +1,12 @@
 # MongoDB
 ## A straightforward configuration to get Graylog up and ready
 
-Graylog works with 4.x MongoDB instances.
+Graylog works with 4.x MongoDB instances. Don't try using newest versions of MongoDB. It might not break your instance, but you're not sure what will happen.
 
 Our Graylog and MongoDB hosts are called 
-- graymongo1.nerd.mooc
-- graymongo2.nerd.mooc
-- graymongo3.nerd.mooc
+- graymongo01.nerd.mooc
+- graymongo02.nerd.mooc
+- graymongo03.nerd.mooc
 
 ## Install
 > :warning: On the three Nodes !
