@@ -1,7 +1,8 @@
 # Graylog
 
-**You will first need those packets**
+The configuration of Graylog is build in one huge big monolithic file. Instead of using a premade file, one should make a backup of the original one and work on a copy.
 
+**You will first need those packets**
 ```shell
 apt install -y dirmngr openjdk-11-jre-headless pwgen uuid-runtime
 ```
