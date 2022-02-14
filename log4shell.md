@@ -15,5 +15,5 @@ apt update && apt -y install graylog-server
 If not :
 
 ``` shell
-echo "-Dlog4j2.formatMsgNoLookups=true" /etc/elasticsearch/jvm.options
+echo "-Dlog4j2.formatMsgNoLookups=true" >> /etc/elasticsearch/jvm.options
 ```
