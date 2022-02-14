@@ -1,0 +1,7 @@
+rule "Whois | destination_ip"
+when
+	has_field("destination_ip") && ! in_private_net(to_string($message.destination_ip))
+then
+    let whois = whois_lookup_ip(to_string($message.destination_ip), "destination_ip");
+    set_fields(whois);
+end
