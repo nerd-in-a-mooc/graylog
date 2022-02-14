@@ -1,0 +1,10 @@
+rule "GeoIP | source_ip"
+when
+    has_field("source_ip") && ! in_private_net(to_string($message.source_ip))
+then
+	let geo = lookup("geoip-lookup-table", to_string($message.source_ip));
+	set_field("source_ip_geolocation", geo["coordinates"]);
+	set_field("source_ip_geo_country_code", geo["country"].iso_code);
+	set_field("source_ip_geo_country_name", geo["country"].names.en);
+	set_field("source_ip_geo_city_name", geo["city"].names.en);
+end
