@@ -1,0 +1,7 @@
+rule "Whois | source_ip"
+when
+    has_field("source_ip") && ! in_private_net(to_string($message.source_ip))
+then
+    let whois = whois_lookup_ip(to_string($message.source_ip), "source_ip");
+    set_fields(whois);
+end
