@@ -1,15 +1,19 @@
 rule "Windows | User : new user"
 when
-    // assumes you have checked for
-    // windows-security-information
+    //
+    // Assumes you have checked for windows-security-information
+    //
     to_string($message.winlog_event_id) == "4720"  &&
     NOT starts_with(to_string($message.winlog_event_data_TargetUserName), "ReplayEngine")  //rapidrecovery sucks!
 then
-    // Build Alert structures
-    // Create subject of alert
+    //
+    // Build Alert structures : subject of alert
+    //
     let subject_0 = concat("NEW USER: ", to_string($message.winlog_event_data_TargetUserName));
     set_field("event_digest", subject_0);
     set_field("ALERT", "TRUE");
+    //
     // Route to stream Windows Alerts
-    route_to_stream(id: "62028d804c903c07802f5a78");
+    //
+    route_to_stream(id: "<ID of your alert stream>");
 end
