@@ -1,0 +1,7 @@
+rule "TOR exit node | source_ip"
+when
+	has_field("source_ip") && ! in_private_net(to_string($message.source_ip))
+then
+    let tor_check = tor_lookup(to_string($message.source_ip));
+	set_field("source_ip_tor_node", tor_check.threat_indicated);
+end
