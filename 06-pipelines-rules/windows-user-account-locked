@@ -1,11 +1,13 @@
 rule "Windows | User : Locked"
 when
-    // assumes you have checked for
-    // windows-security-information
+    //
+    // Assumes you have checked for windows-security-information
+    //
     to_string($message.winlog_event_id) == "4740"
 then
-    // Build Alert structures
-    // Create subject of alert
+    //
+    // Build Alert structures : subject of alert
+    //
     let subject_0 = concat("USER LOCK: ", to_string($message.winlog_event_data_TargetUserName));
     set_field("event_digest", subject_0);
     set_field("event_cause", subject_0);
