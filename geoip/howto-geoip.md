@@ -101,15 +101,9 @@ GeoIP for destination IP
 ```bash
 rule "GeoIP | destination_ip"
 when
-	has_field("destination_ip")
-	AND NOT 
-    	( // exclude internal IPs
-		has_field("destination_ip_is_internal")
-	AND
-		to_bool($message.destination_ip_is_internal)
-    	)
+	has_field("destination_ip") && ! in_private_net(to_string($message.destination_ip))
 then
-	let geo = lookup("geoip-lookup", to_string($message.destination_ip));
+	let geo = lookup("geoip-lookup-table", to_string($message.destination_ip));
 	set_field("destination_ip_geolocation", geo["coordinates"]);
 	set_field("destination_ip_geo_country_code", geo["country"].iso_code);
 	set_field("destination_ip_geo_country_name", geo["country"].names.en);
@@ -126,15 +120,9 @@ GeoIP for source IP
 ```bash
 rule "GeoIP | source_ip"
 when
-	has_field("source_ip")
-	AND NOT 
-	( // exclude internal IPs
-		has_field("source_ip_is_internal")
-	AND
-		to_bool($message.source_ip_is_internal)
-    	)
+    has_field("source_ip") && ! in_private_net(to_string($message.source_ip))
 then
-	let geo = lookup("geoip-lookup", to_string($message.source_ip));
+	let geo = lookup("geoip-lookup-table", to_string($message.source_ip));
 	set_field("source_ip_geolocation", geo["coordinates"]);
 	set_field("source_ip_geo_country_code", geo["country"].iso_code);
 	set_field("source_ip_geo_country_name", geo["country"].names.en);
