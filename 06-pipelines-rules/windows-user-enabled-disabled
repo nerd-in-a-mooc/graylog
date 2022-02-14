@@ -1,17 +1,23 @@
 rule "Windows | User : enabled / disabled"
 when
-    // assumes you have checked for
-    // windows-security-information
+    //
+    // Assumes you have checked for windows-security-information
+    //
     (to_string($message.winlog_event_id) == "4722"  ||
     to_string($message.winlog_event_id)  == "4725") &&
+    //
     // RapidRecovery backup enables accounts for operation overnight
+    //
     NOT starts_with(value: to_string($message.winlog_event_data_TargetUserName), prefix:"ReplayEngine")
 then
-    // Build Alert structures
-    // Create subject of (e-mail) alert
+    //
+    // Build Alert structures : subject of alert
+    //
     let subject_0 = concat("USER ENABLED/DISABLED: ", to_string($message.winlog_event_data_TargetUserName));
     set_field("event_digest", subject_0);
     set_field("ALERT", "TRUE");
+    //
     // Route to stream Windows Alerts
-    route_to_stream(id: "62028d804c903c07802f5a78");
+    //
+    route_to_stream(id: "<ID of your alert stream>");
 end
