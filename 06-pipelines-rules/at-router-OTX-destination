@@ -1,0 +1,11 @@
+rule "OTX Lookup | destination_ip"
+
+when
+	has_field("destination_ip") && ! in_private_net(to_string($message.destination_ip))
+then
+
+    let intel = otx_lookup_ip(to_string($message.destination_ip));
+    set_field("destination_ip_threat_indicated", intel.otx_threat_indicated);
+    set_field("destination_ip_threat_ids", intel.otx_threat_ids);
+    set_field("destination_ip_threat_names", intel.otx_threat_names);
+end
