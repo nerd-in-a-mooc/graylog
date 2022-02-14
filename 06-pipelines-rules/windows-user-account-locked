@@ -11,6 +11,8 @@ then
     set_field("event_cause", subject_0);
     set_field("event_action", "Contact user via phone to confirm any unlock");
     set_field("ALERT", "TRUE");
+    //
     // Route to stream Windows Alerts
+    //
     route_to_stream(id: "<ID of your alert stream>");
 end
