@@ -38,17 +38,6 @@ Then edit this file with your favorite text editor...
 
 Have a look at [Bootstrapping a cluster](https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-discovery-bootstrap-cluster.html) from Elasticsearch documentation.
 
-## 🥜 Start the service
-
-Load, enable and start the service.
-
-```shell
-systemctl daemon-reload
-systemctl enable elasticsearch.service
-systemctl start elasticsearch.service
-systemctl status elasticsearch.service -l --no-pager
-```
-
 ## 🧇 Fine tuning
 
 ### 🍂 JVM heap Size
@@ -73,6 +62,17 @@ So let's turn off the swap :
 
 ```shell
 swapoff -a
+```
+
+## 🥜 Start the service
+
+Load, enable and start the service.
+
+```shell
+systemctl daemon-reload
+systemctl enable elasticsearch.service
+systemctl start elasticsearch.service
+systemctl status elasticsearch.service -l --no-pager
 ```
 
 ## 🥯 Check the service
