@@ -19,7 +19,9 @@ It's possible to start with a one node cluster and then and more nodes along the
 
 
 **Add the keys, the source list, then update and install Elasticsearch.**
+
 > ⚠️ Be careful : Graylog only works with OSS version !
+
 ```shell
 wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add -
 
