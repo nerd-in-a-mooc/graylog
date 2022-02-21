@@ -1,4 +1,4 @@
-# World Map
+# 🦛 World Map
 
 **Want a cool world map on your dashboards that shows where does the villains come from ? Say no more !**
 
@@ -6,24 +6,23 @@ You must create an account on [dev.maxmind.com](https://dev.maxmind.com/geoip/ge
 Go to the download page and the Geo2Lite City GZIP Binary on your computer.
 
 
-💡 Upload that archive to your Graylog server(s)
+**Upload that archive to your Graylog server(s)**
 ```bash
 scp GeoLite2-City_*.tar.gz root@server:/etc/graylog/server/
 ```
 
-Rename the archive then move it to where it's supposed to be.
-
+**Rename the archive then move it to where it's supposed to be.**
 ```bash
 tar -xvf /etc/graylog/server/GeoLite2-City_*.tar.gz -C /etc/graylog/server/
 rm /etc/graylog/server/GeoLite2-City_*.tar.gz
 mv /etc/graylog/server/GeoLite2-City_*/ /etc/graylog/server/
 ```
 
-# On the Graylog UI
+## 🍇 Lookup Table
 
-## Lookup Table
+> ⚠️ From the Graylog UI !
 
-### Data Adapter
+### 💐 Data Adapter
 
 - System
     - Lookup Tables
@@ -47,7 +46,7 @@ City Database
 - **Refresh File**
 Nothing to do here
 
-### Lookup Cache
+### 🌸 Lookup Cache
 
 - System
     - Lookup Tables
@@ -67,7 +66,7 @@ geoip-cache
 - **Expire after write**
 Nothing to do here
 
-## Lookup Tables
+### 💮 Lookup Tables
 
 - System
     - Lookup Tables
@@ -85,14 +84,14 @@ geoip-data-adapter
 - **Cache**
 geoip-cache
 
-## Pipelines
+## 🥦 Pipelines
 
 - System
     - Piplines
         - Manage Rules
             - Create Rule
 
-### Destination IP
+### 🏵️ Destination IP
 
 - **Title**
 GeoIP for destination IP
@@ -111,7 +110,7 @@ then
 end
 ```
 
-### Source IP
+### 🌹 Source IP
 
 - **Title**
 GeoIP for source IP
@@ -130,7 +129,7 @@ then
 end
 ```
 
-### Pipeline New Stage
+### 🌼 Pipeline New Stage
 
 - System
     - Pipelines
@@ -147,13 +146,12 @@ Doesn't matter, there is no other stage.
 	- GeoIP | source_ip
 	- GeoIP | destination_ip
 
-**Is it working ?**
 
-# Dashboard
+## 🍒 Dashboard
 
-## source_ip_geolocation
+### 🌷 source_ip_geolocation
 
-![world map](https://raw.githubusercontent.com/nerd-in-a-mooc/graylog/main/images/geoip_source_ip_geolocation_map.png)
+![world map](../images/geoip_source_ip_geolocation_map.png)
 
 - Rollup Columns
 	- Direction : ROW
@@ -169,11 +167,11 @@ Doesn't matter, there is no other stage.
 
 Don't forget to properly name it !
 
-### destination_ip_geolocation
+### 🌾 destination_ip_geolocation
 
 Duplicate the first one you created and just change the field `source_ip_geolocation` to `destination_ip_geolocation` !
 
-# Sources
+## 🍙 Sources
 
 - [How to set up Graylog GeoIP Configuration](https://www.graylog.org/post/how-to-set-up-graylog-geoip-configuration)
 - [GeoIP does not work](https://community.graylog.org/t/graylog-4-0-5-geoip-does-not-work/19916/8)

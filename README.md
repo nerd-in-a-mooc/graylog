@@ -1,4 +1,4 @@
-# 🥪 Graylog is awesome...
+# 🦮 Graylog is awesome...
 
 But you might need a little help to get use to it, like I did. I use Graylog on a day to day basis. So I try to gather informations that I would have like to find when I first get started with it.
 It can get confusing to build a FOSS SIEM solution from scratch, even more if you are not familiar with Elasticsearch and MongoDB (both needed). 
@@ -16,7 +16,7 @@ Graylog is based on three softwares :
 
 You will find good configurations files and explanation that will walk you through the set up, the configuration and the daily use of Graylog.
 
-You will either be able to start with a fully **functionnal cluster** made of
+You will either be able to start with a fully **functional cluster** made of
 
 - 1 NGINX Loadbalancer
 - 3 Graylog/MongoDB nodes
@@ -28,5 +28,13 @@ You will either be able to start with a fully **functionnal cluster** made of
 - 1 Graylog/MongoDB node
 - 1 Elasticsearch node
 
-## 🧅 Follow the numbers 
-
+## 🧅 Proceed in that order to get everything running
+1. [Elasticsearch](01-elasticsearch/readme.md)
+2. [MongoDB](02-mongodb/README.md)
+3. [Graylog Server](03-graylog-server/README.md)
+4. [NGINX](04-nginx/readme.md)
+5. [Agents]()
+6. [Pipeline Rules]
+7. [GeoIP]
+8. [ContentPack]
+9. [Notification]

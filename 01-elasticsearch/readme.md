@@ -1,5 +1,12 @@
 # 🦦 Elasticsearch
 
+  - [🥑 Installation](#-installation)
+  - [🥦 Configuration](#-configuration)
+  - [🧇 Fine tuning](#-fine-tuning)
+    - [🍂 JVM heap Size](#-jvm-heap-size)
+    - [🍁 SWAP Memory](#-swap-memory)
+  - [🥜 Start the service](#-start-the-service)
+  - [🥯 Check the service](#-check-the-service)
 
 Elasticsearch is a NoSQL database search engine developed in Java, which Graylog depends on. 
 

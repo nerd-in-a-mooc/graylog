@@ -1,1 +1,0 @@
-Images becauses images help.
