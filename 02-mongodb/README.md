@@ -1,6 +1,12 @@
 # 🦍 MongoDB
 
-## A straightforward configuration to get Graylog up and ready
+**A straightforward configuration to get Graylog up and ready**
+
+  * [🍍 Install](#---install)
+  * [🥨 Configuration](#---configuration)
+    + [🌻 Replica Shard](#---replica-shard)
+    + [🌼 RBAC](#---rbac)
+  * [🌰 Secure](#---secure)
 
 Graylog works with 4.x MongoDB instances. Don't try using newest versions of MongoDB. It might not break your instance, but you're not sure what will happen.
 
