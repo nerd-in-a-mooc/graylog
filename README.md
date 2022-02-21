@@ -33,8 +33,8 @@ You will either be able to start with a fully **functional cluster** made of
 2. [MongoDB](02-mongodb/README.md)
 3. [Graylog Server](03-graylog-server/README.md)
 4. [NGINX](04-nginx/readme.md)
-5. [Agents]()
+5. [Agents](05-agents/README.md)
 6. [Pipeline Rules]
-7. [GeoIP]
+7. [GeoIP](07%20-%20geoip/README.md)
 8. [ContentPack]
 9. [Notification]
