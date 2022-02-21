@@ -1,15 +1,18 @@
-# MongoDB
+# 🦍 MongoDB
+
 ## A straightforward configuration to get Graylog up and ready
 
 Graylog works with 4.x MongoDB instances. Don't try using newest versions of MongoDB. It might not break your instance, but you're not sure what will happen.
 
-Our Graylog and MongoDB hosts are called 
+Our Graylog and MongoDB hosts are called
+
 - graymongo01.nerd.mooc
 - graymongo02.nerd.mooc
 - graymongo03.nerd.mooc
 
-## Install
-> :warning: On the three Nodes !
+## 🍍 Install
+
+> ⚠️ On the three Nodes !
 
 ```shell
 apt install -y gnupg
@@ -19,8 +22,8 @@ apt update && apt install -y mongodb-org
 systemctl enable mongod && systemctl start mongod
 systemctl status mongod -l --no-pager
 ```
-## Configuration
-> :warning: On the three Nodes !
+## 🥨 Configuration
+> ⚠️ On the three Nodes !
 
 **Before we go any further, let's save the main configuration file.**
 ```shell
@@ -30,8 +33,8 @@ mv /etc/mongod.conf /etc/mongod.conf.bak
 **Let's now edit `/etc/mongod.conf` with your favorite text editor and paste this configuration file inside.**
 Dont forget to change the hostname at line 23 !
 
-## Replica Shard
-> :warning: On ONE node !
+### 🌻 Replica Shard
+> ⚠️ On ONE node !
 
 **Connect to MongoDB**
 
@@ -53,7 +56,7 @@ rs.initiate(
 )
 ```
 
-## RBAC
+### 🌼 RBAC
 
 **Connect to MongoDB**
 ```shell
@@ -104,11 +107,11 @@ db.createUser(
 )
 ```
 
-## Secure
+## 🌰 Secure
 
 Let's now create a keyfile that the nodes will use as an authentication system. This is a password shared only by the nodes in the MongoDB cluster, allowing cluster members to authenticate themselves. It is also possible to use an internal CA to generate x.509 certificates or to use "real" certificates. This higher form of security is more than desirable for a cluster using an unsecured network. 
 
-> :warning: On ONE node !
+> ⚠️ On ONE node !
 
 **Create a directory to add the key and then generate the key.**
 
@@ -131,7 +134,7 @@ scp /var/lib/graylog-database/mongo-security/mongo-key root@graymongo3.nerd.mooc
 ssh root@graymongo3.nerd.mooc "chown -R mongodb:mongodb /var/lib/graylog-database/mongo-security/ && chmod -R 700 /var/lib/graylog-database/mongo-security/"
 ```
 
-> :warning: On the three nodes !
+> ⚠️ On the three nodes !
 
 Edit the configuration file to allow secure authentication by uncommneting lines 29 to 31. `Transition to Auth : true` lets us test our configuration by allowing both secured / unsecured communication between nodes.
 
@@ -141,13 +144,13 @@ security:
   transitionToAuth: true
 ```
 
-> :warning: On the SECONDARY nodes !
+> ⚠️ On the SECONDARY nodes !
 
 ```shell
 systemctl restart mongod.service
 ```
 
-> :warning: On the PRIMARY node !
+> ⚠️ On the PRIMARY node !
 
 **Connect to MongoDB**
 ```shell
