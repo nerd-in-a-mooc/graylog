@@ -20,7 +20,13 @@ http.port: 9200
 #
 # --------------------------------- Discovery ----------------------------------
 #
-discovery.seed_hosts: ["elastic01.nerd.mooc"]
+#cluster.initial_master_nodes
+#  - elastic01.nerd.mooc
+#
+discovery.seed_hosts:
+#  - elastic01.nerd.mooc
+#  - elastic02.nerd.mooc
+#  - elastic03.nerd.mooc
 #
 # ---------------------------------- Graylog -----------------------------------
 #
