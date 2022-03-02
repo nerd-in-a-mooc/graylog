@@ -36,5 +36,5 @@ You will either be able to start with a fully **functional cluster** made of
 5. [Agents](05-agents/README.md)
 6. [Pipeline Rules](https://github.com/nerd-in-a-mooc/graylog/tree/main/06-pipelines-rules#readme)
 7. [GeoIP](07%20-%20geoip/README.md)
-8. [ContentPack]
-9. [Notification]
+8. [ContentPack](https://github.com/nerd-in-a-mooc/graylog/tree/main/08%20-%20content-packs)
+9. [Notification](https://github.com/nerd-in-a-mooc/graylog/blob/main/09%20-%20notifications/slack)
