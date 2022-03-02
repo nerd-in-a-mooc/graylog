@@ -34,7 +34,7 @@ You will either be able to start with a fully **functional cluster** made of
 3. [Graylog Server](03-graylog-server/README.md)
 4. [NGINX](04-nginx/readme.md)
 5. [Agents](05-agents/README.md)
-6. [Pipeline Rules]
+6. [Pipeline Rules](https://github.com/nerd-in-a-mooc/graylog/tree/main/06-pipelines-rules#readme)
 7. [GeoIP](07%20-%20geoip/README.md)
 8. [ContentPack]
 9. [Notification]
